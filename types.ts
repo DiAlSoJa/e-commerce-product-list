@@ -11,6 +11,11 @@ export interface Product {
     };
   }
 
+  
+export interface ICartProduct{
+  product:Product;
+  amount:number;
+}
 export enum SortEnum {
     None="",
     Price = 'price',

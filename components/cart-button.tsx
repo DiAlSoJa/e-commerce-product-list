@@ -1,6 +1,7 @@
 "use client"
 import { RootState } from '@/lib/store'
 import { ShoppingBag } from 'lucide-react'
+import Link from 'next/link'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
@@ -19,12 +20,12 @@ const CartButton = () => {
           <span>  ${totalPrice}</span>
         </div>
       )}
-      <button onClick={() => {}} className="flex items-center rounded-full bg-black px-4 py-2">
+      <Link href={"/cart"} className="flex items-center rounded-full bg-black px-4 py-2">
           <ShoppingBag size={20} color="white" />
           <span className="ml-2 text-sm font-medium text-white">
               {totalItems}
           </span>
-      </button>
+      </Link>
     </div>
   )
 }
