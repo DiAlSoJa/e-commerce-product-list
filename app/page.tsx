@@ -29,13 +29,21 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="py-5">
-      <ActionBar page={page} totalPages={totalPages} />
+      <ActionBar
+         page={page} 
+         totalPages={totalPages}
+         sort={sortQuery}
+         search={search} 
+         />
+
       {(!isPageValid || !isSortValid|| products.length === 0)?
           <div className="text-center text-lg font-medium text-gray-700 mt-5">
             There are no products available.
          </div>
       :
-      <ProductList products={products}/>
+
+        <ProductList products={products}/>
+
       }
     </div>
   );
