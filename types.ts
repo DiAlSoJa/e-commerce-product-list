@@ -10,3 +10,9 @@ export interface Product {
       count: number;
     };
   }
+
+export enum SortEnum {
+    None="",
+    Price = 'price',
+    Rating = 'rating',
+}

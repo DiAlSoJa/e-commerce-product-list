@@ -63,7 +63,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
-            ${product.price}
+            ${product.price} <small className='text-xs'>(USD)</small>
           </span>
           <AddCartButton product={product}/>
         </div>
