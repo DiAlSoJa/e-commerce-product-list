@@ -1,4 +1,4 @@
-import { ShoppingBag } from 'lucide-react'
+
 import React from 'react'
 import CartButton from './cart-button'
 
@@ -10,12 +10,8 @@ const Header =  () => {
             <a className="block text-black text-2xl" href="#">
                 <h1>Greyball</h1>
             </a>
-
-            
             <CartButton/>
 
-                
-            
         </div>
         </header>
 
