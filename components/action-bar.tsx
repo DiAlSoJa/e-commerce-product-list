@@ -1,24 +1,20 @@
 "use client";
 
 import { SortEnum } from '@/types';
-import Link from 'next/link';
+import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useState, ChangeEvent } from 'react';
 
 interface ActionBarProps {
-  totalPages: number;
-  page: number;
   sort:SortEnum;
   search:string;
 }
 
-const ActionBar: React.FC<ActionBarProps> = ({ totalPages, page,sort,search}) => {
+const ActionBar: React.FC<ActionBarProps> = ({ sort,search}) => {
   const [sortValue, setSortValue] = useState<SortEnum>(sort);
   const [searchValue,setSearchValue] = useState(search);
   const router = useRouter();
 
-  const isPreviousDisabled = page <= 1;
-  const isNextDisabled = page >= totalPages;
 
   const sortHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     const sortSelected = e.target.value as SortEnum;
@@ -33,39 +29,31 @@ const ActionBar: React.FC<ActionBarProps> = ({ totalPages, page,sort,search}) =>
   };
 
   return (
-    <div className="flex items-center justify-between bg-white p-4 rounded shadow">
-      <div>
+    <div className="flex flex-col-reverse sm:flex-row items-center justify-between bg-white p-4 rounded shadow gap-4">
+      <div className='max-sm:w-full'>
         <select
           value={sortValue}
           onChange={sortHandler}
-          className="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+          className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5 "
         >
           <option value={SortEnum.None}>Sort By</option>
           <option value={SortEnum.Price}>Price</option>
           <option value={SortEnum.Rating}>Rating</option>
         </select>
       </div>
-      <div className="flex items-center">
+      <div className='relative max-sm:w-full'>
         <input
           type="text"
           value={searchValue}
           onChange={searchHandler}
           placeholder="Search products..."
-          className="py-2 px-4 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="py-2 pl-10 pr-4 rounded border border-gray-300 w-full"
         />
-        <Link
-          href={isPreviousDisabled ? "#" : `/?page=${page - 1}&sort=${sortValue}&search=${searchValue}`}
-          className={`ml-4 py-2 px-4 rounded ${isPreviousDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-700 hover:bg-indigo-600"} text-white`}
-        >
-          Previous
-        </Link>
-        <Link
-          href={isNextDisabled ? "#" : `/?page=${page + 1}&sort=${sortValue}&search=${searchValue}`}
-          className={`ml-2 py-2 px-4 rounded ${isNextDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-700 hover:bg-indigo-600"} text-white`}
-        >
-          Next
-        </Link>
+        <Search className='absolute top-1/2 -translate-y-1/2 left-2 text-slate-500'/>
+
       </div>
+     
+     
     </div>
   );
 };

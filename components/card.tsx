@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow ">
-      <Link href="#">
+      <Link href="#" className='py-5 block'>
         <div className='h-[200px] '>
              <Image
             height={200}
@@ -26,9 +26,14 @@ const Card: React.FC<CardProps> = ({ product }) => {
 
       <div className="px-5 pb-5">
         <Link href="#">
-          <h5 className="text-xl font-semibold tracking-tight text-gray-900 truncate ">
+          <h5 className="text-2xl font-semibold tracking-tight text-gray-900 truncate ">
             {product.title} 
           </h5>
+          <p className='my-2 text-sm'>
+            {product.description.length > 100
+              ? `${product.description.slice(0, 100)}...`
+              : product.description}
+          </p>
         </Link>
         <div className="flex items-center mt-2.5 mb-5">
           <div className="flex items-center space-x-1 rtl:space-x-reverse">

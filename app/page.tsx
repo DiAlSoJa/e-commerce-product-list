@@ -1,9 +1,9 @@
 
-import Card from "@/components/card";
 import { Product, SortEnum } from "@/types";
 import ActionBar from "@/components/action-bar";
 import getProductsByPage from "@/actions/get-products";
 import ProductList from "@/components/product-list";
+import Pagination from "@/components/pagination";
 
 
 
@@ -28,10 +28,8 @@ export default async function Home({ searchParams }: HomeProps) {
 
 
   return (
-    <div className="py-5">
+    <div className="py-5 px-4">
       <ActionBar
-         page={page} 
-         totalPages={totalPages}
          sort={sortQuery}
          search={search} 
          />
@@ -45,6 +43,13 @@ export default async function Home({ searchParams }: HomeProps) {
         <ProductList products={products}/>
 
       }
+
+      <Pagination
+          page={page} 
+          totalPages={totalPages}
+          sort={sortQuery}
+          search={search} 
+      />
     </div>
   );
 }
