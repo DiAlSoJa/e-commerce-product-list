@@ -17,13 +17,13 @@ const Pagination:React.FC<PaginationProps> = ({totalPages, page,sort,search}) =>
     <div className='flex justify-between items-center max-w-md mx-auto my-5 bg-white rounded shadow p-3'>
         <Link
             href={isPreviousDisabled ? "#" : `/?page=${page - 1}&sort=${sort}&search=${search}`}
-            className={` py-2 px-4 rounded ${isPreviousDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-700 hover:bg-indigo-600"} text-white`}
+            className={` py-2 px-4 rounded ${isPreviousDisabled ? "bg-slate-300 cursor-not-allowed" : "bg-slate-700 hover:bg-slate-600"} text-white`}
         >
             Previous
         </Link>
         <Link
             href={isNextDisabled ? "#" : `/?page=${page + 1}&sort=${sort}&search=${search}`}
-            className={` py-2 px-4 rounded ${isNextDisabled ? "bg-gray-500 cursor-not-allowed" : "bg-indigo-700 hover:bg-indigo-600"} text-white`}
+            className={` py-2 px-4 rounded ${isNextDisabled ? "bg-slate-300 cursor-not-allowed" : "bg-slate-700 hover:bg-slate-600"} text-white`}
         >
             Next
         </Link>
